@@ -1,0 +1,308 @@
+/*
+ * main.cpp
+ *
+ *  Created on: May 30, 2014
+ *      Author: lehongvan
+ */
+#include <iostream>
+#include <random>
+#include <map>
+#include <fstream>
+using namespace std;
+
+const int z=16;		// number of latent factors
+const int d=100;  // number of documents
+int w=0;    		// number of words
+const int ROUND=10; // number of EM rounds
+vector<int> w_list;
+map<int, map<int,int> > d_list;
+map<int, string> w_list_all;
+
+double Pz[z]={};
+double Pdz[z][d]={};
+map<int, double> Pwz[z]={};
+
+
+void readDocsFile();
+void readWordsFile();
+void initialize();
+void eStep(map <int, map <int, vector<double> > >& Pzdw);
+void mStep(map <int, map <int, vector<double> > > Pzdw);
+void output();
+
+int main() {
+
+	time_t start;
+	time(&start);
+
+	//*************** Read File ***************//
+	readDocsFile();
+	readWordsFile();
+
+	//*************** Initialize ***************//
+	// Assign probability distributions, P(z), P(d|z), and P(w|z) randomly
+	initialize();
+
+	//*************** EM ***************//
+	for (int r=0; r<ROUND; ++r) {
+
+		//*************** E step ***************//
+		map <int, map <int, vector<double> > > Pzdw;
+		eStep(Pzdw);
+
+		//*************** M step ***************//
+		mStep(Pzdw);
+	}
+
+	//*************** Write to output file ***************//
+	output();
+
+
+	time_t end;
+	time(&end);
+	cout << "Time: " << difftime(start, end) << endl;
+	return 0;
+}
+
+void readDocsFile(){
+	string line;
+		int line_count = 0;
+
+		ifstream myfile ("/Users/lehongvan/Documents/workspace2/pLSI/src/docs.txt");
+		if (myfile.is_open()) {
+			while (getline (myfile,line) && line_count<d) {
+				string word;
+				int d_index;
+				map<int,int> w_freq;
+				for (string::iterator it=line.begin(); it!=line.end(); ++it)
+				{
+					if(*it == '\t')
+					{
+						d_index = atoi(word.c_str());
+						word = "";
+					}
+					else if(*it == ' ' || it+1 == line.end())
+				    {
+						if (it+1 == line.end()) word.push_back(*it);
+						int word_index = atoi(word.c_str());
+
+						//First time the word is seen in this document
+						map<int,int>::iterator w_it = w_freq.find(word_index);
+				         if(w_it == w_freq.end())
+				         {
+				        	 w_freq.insert(pair<int, int>(word_index, 1));
+				         }
+				         else //The word has been seen before
+				         {
+				        	 w_freq.insert(pair<int, int>(word_index, w_it->second++));
+				         }
+
+				         //First time the word is seen in all documents
+				         if(find(w_list.begin(), w_list.end(), word_index) == w_list.end())
+				         {
+				        	 w_list.push_back(word_index);
+				         }
+				         word = "";
+				    }
+				    else
+				    {
+				         word.push_back(*it);
+				    }
+				}
+				d_list.insert(pair<int, map<int, int> >(d_index, w_freq));
+				line_count++;
+		    }
+		    myfile.close();
+
+		    w = w_list.size();
+		 }
+		else cout << "Unable to open file";
+}
+
+void readWordsFile(){
+	string line;
+
+		ifstream myfile ("/Users/lehongvan/Documents/workspace2/pLSI/src/wlist.txt");
+		if (myfile.is_open()) {
+			while (getline (myfile,line)) {
+				string word;
+				int word_index;
+				for (string::iterator it=line.begin(); it!=line.end(); ++it)
+				{
+					if(*it == '\t' || *it == ' ')
+					{
+						if(isdigit(atoi(word.c_str()))) {
+							word_index = atoi(word.c_str());
+						}
+						else {
+							w_list_all.insert(pair<int, string> (word_index, word));
+							break;
+						}
+				    }
+				    else
+				    {
+				         word.push_back(*it);
+				    }
+				}
+		    }
+		    myfile.close();
+		 }
+		else cout << "Unable to open file";
+}
+
+void initialize() {
+	// Random P(z)
+	std::default_random_engine generator;
+	std::uniform_real_distribution<double> distribution_z(0,1);
+
+	double Z[z]={};
+	double z_total = 0;
+	for (int i=0; i<z; ++i) {
+	    double z_random = distribution_z(generator);
+	    z_total += z_random;
+	    Z[i] = z_random;
+	}
+
+	for (int i=0; i<z; ++i) {
+	    Pz[i] = Z[i]/z_total;
+	}
+
+	std::uniform_real_distribution<double> distribution_d(0,1);
+
+	for (int i=0; i<z; ++i) {
+		for (int j=0; j<d; ++j) {
+			Pdz[i][j]  = distribution_d(generator);
+		}
+	}
+
+	// Random P(w|z)
+	std::uniform_real_distribution<double> distribution_w(0,1);
+
+	for (int i=0; i<z; ++i) {
+	    map<int, double> w_map;
+	    for (int j = 0; j < w_list.size(); j++)
+		{
+			w_map.insert(pair<int, double> (w_list[j], distribution_w(generator)));
+		}
+		Pwz[i] = w_map;
+	}
+}
+
+void eStep(map <int, map <int, vector<double> > >& Pzdw){
+				// loop for documents
+				for (map<int, map<int, int> >::const_iterator i = d_list.begin(); i != d_list.end(); i++) {
+					map <int, vector<double> > w_map;
+
+					// loop for words
+					for (map<int, int>::const_iterator j = i->second.begin(); j != i->second.end(); j++) {
+						double Pzdw_total = 0;
+						vector<double> Pzx_vector;
+						for (int k=0; k<z; ++k) {
+							Pzx_vector.push_back(Pz[k] * Pdz[k][i->first] * Pwz[k].find(j->first)->second);
+							Pzdw_total += Pzx_vector[k];
+						}
+
+						//Normalize
+						for (int k=0; k<z; ++k) {
+							Pzx_vector[k] = Pzx_vector[k] / Pzdw_total;
+//							cout << " z: " << k << " d: " <<  i->first << " w: " << j->first << " Pwdz: " << Pzx_vector[k] << endl;
+						}
+
+						w_map.insert(pair<int, vector<double> >(j->first, Pzx_vector));
+//						cout << " z: " << k << " d: " <<  i->first << " w: " << j->first << " Pwdz: " << Pzx << endl;
+					}
+
+					Pzdw.insert(pair<int, map <int, vector<double> > >(i->first, w_map));
+				}
+
+}
+
+void mStep(map<int, map <int, vector<double> > > Pzdw){
+	double Pz_total = 0;
+
+	for (int k=0; k<z; ++k) {
+		Pz[k] = 0;
+		double Pdz_total = 0;
+		//calculate Pdz
+		for (map<int, map<int, int> >::const_iterator i = d_list.begin(); i != d_list.end(); i++) {
+			Pdz[k][i->first] = 0;
+
+			// loop for words
+			for (map<int, int>::const_iterator j = i->second.begin(); j != i->second.end(); j++) {
+				Pdz[k][i->first] += j->second * Pzdw[i->first].find(j->first)->second[k];
+				cout << Pzdw[i->first].find(j->first)->second[k] << endl;
+				Pdz_total += Pdz[k][i->first];
+			}
+
+			//calculate Pz
+			Pz[k] += Pdz[k][i->first];
+		}
+		Pz_total += Pz[k];
+
+		//Normalize Pdz
+		for (map<int, map<int, int> >::const_iterator i = d_list.begin(); i != d_list.end(); i++) {
+			Pdz[k][i->first] = Pdz[k][i->first] / Pdz_total;
+		}
+
+		//calculate Pwz
+		double Pwz_total = 0;
+		// loop for words
+		for ( int j = 0; j < w_list.size(); j++) {
+			double Pwz_new = 0;
+			// loop for documents
+			for (map<int, map<int, int> >::const_iterator i = d_list.begin(); i != d_list.end(); i++) {
+				if (i->second.find(w_list[j]) != i->second.end()){
+					map<int, int>::const_iterator w_found = i->second.find(w_list[j]);
+					Pwz_new += w_found->second * Pzdw[i->first].find(w_found->first)->second[k];
+				}
+			}
+			Pwz[k].find(w_list[j])->second = Pwz_new;
+			Pwz_total += Pwz_new;
+		}
+
+		// Normalize Pwz
+		for ( int j = 0; j < w_list.size(); j++) {
+			Pwz[k].find(w_list[j])->second = Pwz[k].find(w_list[j])->second / Pwz_total;
+//			cout << "Pwz z=" << k << " w=" << w_list[j] << " Pwz=" << Pwz[k].find(w_list[j])->second << endl;
+		}
+	}
+
+	// Normalize Pz
+	for (int k=0; k<z; ++k) {
+		Pz[k] = Pz[k] / Pz_total;
+	}
+}
+
+
+void output(){
+	// Write P(w|z)
+	vector<int> results[z] = {};
+	for (int i=0; i<z; ++i) {
+		map<double, int> Pwz_vs;
+		int count = 0;
+	    for (map<int, double>::const_iterator j = Pwz[i].begin(); j != Pwz[i].end(); j++)
+		{
+	    	count++;
+	    	Pwz_vs.insert(pair<double, int> (j->second, j->first));
+	    	if (count == 20) break;
+		}
+
+	    for (map<double, int>::const_iterator j = Pwz_vs.end(); j != Pwz_vs.begin(); j--)
+	    {
+	    	if (j == Pwz_vs.end()) continue;
+	    	results[i].push_back(j->second);
+	    }
+	}
+
+	ofstream Pwz_output;
+	Pwz_output.open ("Pwz.txt");
+	for (int i=0; i<z; ++i) {
+		Pwz_output << "Topic " << i << "\n";
+		for (int j=0; j<20; j++){
+//			Pwz_output << w_list_all.find(results[i][j])->second << "/";
+			Pwz_output << results[i][j] << "/";
+		}
+		Pwz_output << "\n";
+	}
+	Pwz_output.close();
+}

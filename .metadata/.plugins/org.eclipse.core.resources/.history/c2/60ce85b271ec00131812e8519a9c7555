@@ -1,0 +1,23 @@
+/*
+ * Docs.cpp
+ *
+ *  Created on: Jun 5, 2014
+ *      Author: lehongvan
+ */
+#include "Docs.h"
+
+void randomDocs(){
+	// Random P(d|z)
+	std::uniform_int_distribution<int> distribution_d(0, );
+
+	double Pdz[z][d]={};
+	for (int i=0; i<z; ++i) {
+		for (int j=0; j<d; ++j) {
+			int d_random = distribution_d(generator);
+			Pdz[i][j] = (double)d_random/d;
+//			cout << "z=" << i << " d=" << j << " Pdz=" << Pdz[i][j] << endl;
+		}
+	}
+}
+
+

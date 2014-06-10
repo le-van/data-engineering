@@ -1,0 +1,29 @@
+/*
+ * Words.h
+ *
+ *  Created on: Jun 5, 2014
+ *      Author: lehongvan
+ */
+
+//=================================
+// include guard
+#ifndef WORDS_H_
+#define WORDS_H_
+
+//=================================
+// included dependencies
+#include <vector>
+
+//=================================
+// the actual class
+class Words
+{
+public:
+	const int NUMBER_OF_WORDS = 19097;  	// number of words
+	vector<int> w_list;			// map of docs with key: id of doc, value: map of words and word frequency
+};
+
+
+
+
+#endif /* WORDS_H_ */

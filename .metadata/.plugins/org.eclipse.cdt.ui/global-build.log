@@ -1,0 +1,510 @@
+00:04:59 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+../src/pLSI.cpp:236:19: error: array type 'double [5]' is not assignable
+                                                                Pzx_array = Pzdw.find(i->first)->second.find(j->first)->second;
+                                                                ~~~~~~~~~ ^
+1 error generated.
+make: *** [src/pLSI.o] Error 1
+00:05:37 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:07:33 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:11:01 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:11:15 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:12:24 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:13:48 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:19:13 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+../src/pLSI.cpp:47:3: error: no matching function for call to 'eStep'
+                eStep(Pzdw);
+                ^~~~~
+../src/pLSI.cpp:27:6: note: candidate function not viable: no known conversion from 'map<[...], map<[...], vector<double>>>' to 'map<[...], map<[...], double *>>' for 1st argument
+void eStep(map <int, map <int, double* > > Pzdw);
+     ^
+../src/pLSI.cpp:228:18: error: no matching constructor for initialization of 'pair<int, map<int, vector<double> > >'
+                                        Pzdw.insert(pair<int, map <int, vector<double> > >(i->first, w_map));
+                                                    ^                                      ~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1/utility:262:5: note: candidate constructor not viable: no known conversion from 'map<[...], double *, [...], allocator<pair<[...], double *>>>' to 'const map<[...], class std::__1::vector<double, class std::__1::allocator<double> >, [...], allocator<pair<[...], class std::__1::vector<double, class std::__1::allocator<double> >>>>' for 2nd argument
+    pair(const _T1& __x, const _T2& __y)
+    ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1/utility:267:9: note: candidate constructor template not viable: requires single argument '__p', but 2 arguments were provided
+        pair(const pair<_U1, _U2>& __p
+        ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1/utility:259:49: note: candidate constructor not viable: requires 0 arguments, but 2 were provided
+    _LIBCPP_INLINE_VISIBILITY _LIBCPP_CONSTEXPR pair() : first(), second() {}
+                                                ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1/utility:280:5: note: candidate constructor not viable: requires single argument '__p', but 2 arguments were provided
+    pair(const pair& __p)
+    ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1/utility:273:33: error: no viable conversion from 'const std::__1::vector<double, std::__1::allocator<double> >' to 'double *'
+            : first(__p.first), second(__p.second) {}
+                                ^      ~~~~~~~~~~
+../src/pLSI.cpp:224:20: note: in instantiation of function template specialization 'std::__1::pair<const int, double *>::pair<int, std::__1::vector<double, std::__1::allocator<double> > >' requested here
+                                                w_map.insert(pair<int, vector<double> >(j->first, Pzx_vector));
+                                                             ^
+3 errors generated.
+make: *** [src/pLSI.o] Error 1
+00:20:40 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:22:16 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+../src/pLSI.cpp:50:3: error: no matching function for call to 'mStep'
+                mStep(Pzdw);
+                ^~~~~
+../src/pLSI.cpp:28:6: note: candidate function not viable: no known conversion from 'map<int, map<int, vector<double> > >' to 'vector<map<int, vector<double> > >' for 1st argument
+void mStep(vector<map <int, vector<double> > > Pzdw);
+     ^
+1 error generated.
+make: *** [src/pLSI.o] Error 1
+00:22:59 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:23:53 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:24:13 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+make: Nothing to be done for `all'.
+00:24:59 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:26:07 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:26:31 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:28:04 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:28:15 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:28:21 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:28:46 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:30:22 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:30:43 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:31:15 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+00:32:50 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+10:42:24 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+../src/pLSI.cpp:39:2: error: use of undeclared identifier 'readWordsFile'; did you mean 'readDocsFile'?
+        readWordsFile();
+        ^~~~~~~~~~~~~
+        readDocsFile
+../src/pLSI.cpp:26:6: note: 'readDocsFile' declared here
+void readDocsFile();
+     ^
+../src/pLSI.cpp:123:7: warning: unused variable 'line_count' [-Wunused-variable]
+                int line_count = 0;
+                    ^
+1 warning and 1 error generated.
+make: *** [src/pLSI.o] Error 1
+10:43:16 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+10:44:12 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+10:46:22 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+10:47:08 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+10:47:47 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+10:50:51 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+10:51:58 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+10:52:24 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+10:53:16 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+10:57:27 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+../src/pLSI.cpp:302:18: error: invalid operands to binary expression ('int' and 'iterator' (aka '__wrap_iter<pointer>'))
+                for (int j=0; j<results[i].end(); j++){
+                              ~^~~~~~~~~~~~~~~~~
+1 error generated.
+make: *** [src/pLSI.o] Error 1
+11:00:11 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+11:02:01 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+11:02:23 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+11:06:28 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+11:06:50 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+make: Nothing to be done for `all'.
+11:12:26 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+15:39:59 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 

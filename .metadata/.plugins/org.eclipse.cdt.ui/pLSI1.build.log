@@ -1,0 +1,19 @@
+18:15:14 **** Incremental Build of configuration Debug for project pLSI1 ****
+make all 
+Building file: ../src/main1.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -std=c++11 -MMD -MP -MF"src/main1.d" -MT"src/main1.d" -o "src/main1.o" "../src/main1.cpp"
+../src/main1.cpp:155:11: warning: unused variable 'random' [-Wunused-variable]
+                        double random = (double)w_random/w;
+                               ^
+1 warning generated.
+Finished building: ../src/main1.cpp
+ 
+Building target: pLSI1
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI1"  ./src/Docs.o ./src/Factors.o ./src/main.o ./src/main1.o ./src/pLSI.o   
+Finished building target: pLSI1
+ 
+
+18:15:16 Build Finished (took 2s.312ms)
+

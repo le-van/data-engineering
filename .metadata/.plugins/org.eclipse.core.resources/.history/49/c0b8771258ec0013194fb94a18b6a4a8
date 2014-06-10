@@ -1,0 +1,31 @@
+/*
+ * pLSI.h
+ *
+ *  Created on: Jun 5, 2014
+ *      Author: lehongvan
+ */
+
+#ifndef PLSI_H_
+#define PLSI_H_
+
+//=================================
+// included dependencies
+#include <Docs.h>
+#include <Words.h>
+#include <Factors.h>
+
+//=================================
+// the actual class
+class Factors
+{
+public:
+	Docs docs;
+	Words words;
+	Factors factors;
+	readDocsFile(docs, words);
+};
+
+
+
+
+#endif /* PLSI_H_ */

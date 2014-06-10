@@ -1,0 +1,14 @@
+//============================================================================
+// Name        : pLSI1.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+
+using namespace std;
+
+void readDocsFile(Docs docs, Words words){
+
+}

@@ -1,0 +1,15 @@
+15:39:59 **** Incremental Build of configuration Debug for project pLSI ****
+make all 
+Building file: ../src/pLSI.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/pLSI.d" -MT"src/pLSI.d" -o "src/pLSI.o" "../src/pLSI.cpp"
+Finished building: ../src/pLSI.cpp
+ 
+Building target: pLSI
+Invoking: MacOS X C++ Linker
+g++  -o "pLSI"  ./src/pLSI.o   
+Finished building target: pLSI
+ 
+
+15:40:03 Build Finished (took 3s.888ms)
+

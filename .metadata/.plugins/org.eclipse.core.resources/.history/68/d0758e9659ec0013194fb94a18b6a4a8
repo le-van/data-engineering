@@ -1,0 +1,32 @@
+/*
+ * Docs.h
+ *
+ *  Created on: Jun 5, 2014
+ *      Author: lehongvan
+ */
+
+
+//=================================
+// include guard
+#ifndef DOCS_H_
+#define DOCS_H_
+
+//=================================
+// included dependencies
+#include <map>
+
+using namespace std;
+//=================================
+// the actual class
+class Docs
+{
+public:
+	const int NUMBER_OF_DOCS = 19097;  	// number of documents
+	map<int, map<int,int>> d_list;		// map of docs with key: id of doc, value: map of words and word frequency
+
+	void readDocsFile();
+};
+
+
+
+#endif /* DOCS_H_ */

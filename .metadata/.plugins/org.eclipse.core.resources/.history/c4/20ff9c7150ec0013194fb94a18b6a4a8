@@ -1,0 +1,25 @@
+//=================================
+// include guard
+#ifndef __MYCLASS_H_INCLUDED__
+#define __MYCLASS_H_INCLUDED__
+
+//=================================
+// forward declared dependencies
+class Foo;
+class Bar;
+
+//=================================
+// included dependencies
+#include <map>
+
+//=================================
+// the actual class
+class Docs
+{
+public:
+	const int NUMBER_OF_DOCS = 19097;  	// number of documents
+	map<int, map<int,int>> d_list;		// map of docs with key: id of doc, value: map of words and word frequency
+};
+
+#endif // __MYCLASS_H_INCLUDED__
+
