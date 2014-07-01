@@ -16,12 +16,12 @@ using namespace std;
 const int z=32;		// number of latent factors
 const int d=19098;  // number of documents
 const int w=1878;
-const int ROUND=1000; // number of EM rounds
+const int ROUND=200; // number of EM rounds
 const double alpha=0.5;
 const double beta=0.05;
 
-int tp[d][z];
-int tw[z][w];
+int tp[d][z] = {0};
+int tw[z][w] = {0};
 
 vector<int> w_index;
 vector<int> d_index;
@@ -149,19 +149,22 @@ void initialize() {
 			int t_random = distribution(generator);
 			d_info[i][j].second = t_random;
 			// update matrix
-			tp[i][t_random] = 1;
-			tw[t_random][d_info[i][j].first] = 1;
+			if (tp[i][t_random] == 0) tp[i][t_random] = 1;
+			else tp[i][t_random] += 1;
+
+			if (tw[t_random][d_info[i][j].first] == 0) tw[t_random][d_info[i][j].first]  = 1;
+			else tw[t_random][d_info[i][j].first] += 1;
 		}
 	}
-	// loop for docs
-	for (int i=0; i<d; ++i) {
-		// loop for words
-		for (int j=0; j<d_info[i].size(); ++j) {
-			vector<int>::iterator word_it = find (w_index.begin(), w_index.end(), d_info[i][j].first);
-			int word_idx = distance(w_index.begin(), word_it);
-			cout << "docs: " << i << "words: " << word_idx << "topic: " << d_info[i][j].second << endl;
-		}
-	}
+//	// loop for docs
+//	for (int i=0; i<d; ++i) {
+//		// loop for words
+//		for (int j=0; j<d_info[i].size(); ++j) {
+//			vector<int>::iterator word_it = find (w_index.begin(), w_index.end(), d_info[i][j].first);
+//			int word_idx = distance(w_index.begin(), word_it);
+//			cout << "docs: " << i << "words: " << word_idx << "topic: " << d_info[i][j].second << endl;
+//		}
+//	}
 
 }
 
