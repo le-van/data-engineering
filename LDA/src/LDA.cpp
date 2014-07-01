@@ -17,7 +17,7 @@ const int z=32;		// number of latent factors
 const int d=19098;  // number of documents
 const int w=1878;
 const int ROUND=200; // number of EM rounds
-const double alpha=0.5;
+const double alpha=3;
 const double beta=0.05;
 
 int tp[d][z] = {0};
@@ -152,10 +152,16 @@ void initialize() {
 			if (tp[i][t_random] == 0) tp[i][t_random] = 1;
 			else tp[i][t_random] += 1;
 
-			if (tw[t_random][d_info[i][j].first] == 0) tw[t_random][d_info[i][j].first]  = 1;
+			if (tw[t_random][d_info[i][j].first] == 0) tw[t_random][d_info[i][j].first] = 1;
 			else tw[t_random][d_info[i][j].first] += 1;
 		}
 	}
+
+//	for (int i=0; i<z; i++) {
+//		for (int j=0; j<w; j++) {
+//			if (tw[i][j] > 1) cout << "topic: " << i << " word: " << j << " number: " << tw[i][j] << endl;
+//		}
+//	}
 //	// loop for docs
 //	for (int i=0; i<d; ++i) {
 //		// loop for words
