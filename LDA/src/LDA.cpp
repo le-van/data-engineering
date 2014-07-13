@@ -17,7 +17,7 @@ const int z=32;		// number of latent factors
 const int d=19098;  // number of documents
 const int w=1878;
 const int ROUND=200; // number of EM rounds
-const double alpha=3;
+const double alpha=0.001;
 const double beta=0.05;
 
 int tp[d][z] = {0};
